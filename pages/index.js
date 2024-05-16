@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, 
 import fs from 'fs';
 import path from 'path';
 import { Container, Typography, Button, Box } from '@mui/material';
+import styles from '../styles/Home.module.css';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
@@ -32,7 +33,7 @@ export default function Home({ data }) {
 
   return (
     <Container>
-      <Typography variant="h2" component="h1" gutterBottom>
+      <Typography variant="h2" component="h1" gutterBottom className={styles.heading}>
         Gastos en Campañas
       </Typography>
       <Box my={2}>
@@ -43,7 +44,7 @@ export default function Home({ data }) {
           Ordenar por Número de Anuncios
         </Button>
       </Box>
-      <Box my={4}>
+      <Box my={4} className={styles.chart}>
         <BarChart
           width={600}
           height={300}
@@ -60,7 +61,7 @@ export default function Home({ data }) {
           <Bar dataKey="Number of ads in Library" fill="#82ca9d" />
         </BarChart>
       </Box>
-      <Box my={4}>
+      <Box my={4} className={styles.chart}>
         <PieChart width={400} height={400}>
           <Pie
             data={filteredData}
