@@ -26,11 +26,11 @@
   margin-bottom: 1rem;
 }
 
-.chartsContainer {
+.charts-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; /* Asegúrate de que las gráficas no se envuelvan */
+  flex-wrap: wrap;
   gap: 2rem; /* Espaciado entre las gráficas */
 }
 
@@ -48,10 +48,6 @@
 }
 
 @media (max-width: 768px) {
-  .chartsContainer {
-    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-  }
-
   .chart {
     width: 100%;
     max-width: 90%;
@@ -67,5 +63,11 @@
 
   .projectDescription {
     font-size: 0.9rem;
+  }
+
+  .legend {
+    position: relative;
+    top: 20px;
+    text-align: center;
   }
 }
