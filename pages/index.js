@@ -33,8 +33,14 @@ export default function Home({ data }) {
 
   return (
     <Container>
-      <Typography variant="h2" component="h1" gutterBottom className={styles.heading}>
-        Gastos en Campañas
+      <Typography variant="h2" component="h1" gutterBottom className={styles.projectName}>
+        B.E.N.I.T.O
+      </Typography>
+      <Typography variant="h6" component="p" gutterBottom className={styles.projectDescription}>
+        Búsqueda de Engastos en Networks Inteligentes para Transparencia Oficial
+      </Typography>
+      <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
+        Gastos en Campañas México 2024
       </Typography>
       <Box my={2} className={styles.buttonGroup}>
         <Button variant="contained" color="primary" onClick={filterByAmountSpent} style={{ marginRight: '10px' }}>
