@@ -61,7 +61,7 @@ export default function Home({ data }) {
       </Box>
       <Box my={4} className={styles.chart}>
         <BarChart
-          width={600}
+          width="100%"
           height={300}
           data={filteredData}
           margin={{
