@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import fs from 'fs';
 import path from 'path';
 import { Container, Typography, Button, Box } from '@mui/material';
@@ -60,41 +60,43 @@ export default function Home({ data }) {
         </Button>
       </Box>
       <Box my={4} className={styles.chart}>
-        <BarChart
-          width="100%"
-          height={300}
-          data={filteredData}
-          margin={{
-            top: 5, right: 30, left: 20, bottom: 5,
-          }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Page name" tickFormatter={(name) => name.split(' ')[0]} />
-          <YAxis yAxisId="left" />
-          <YAxis yAxisId="right" orientation="right" />
-          <Tooltip />
-          <Legend />
-          <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
-          <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
-        </BarChart>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            data={filteredData}
+            margin={{
+              top: 5, right: 30, left: 20, bottom: 5,
+            }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="Page name" />
+            <YAxis yAxisId="left" />
+            <YAxis yAxisId="right" orientation="right" />
+            <Tooltip />
+            <Legend />
+            <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
+            <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
+          </BarChart>
+        </ResponsiveContainer>
       </Box>
       <Box my={4} className={styles.chart}>
-        <PieChart width={400} height={400}>
-          <Pie
-            data={filteredData}
-            cx={200}
-            cy={200}
-            labelLine={false}
-            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-            outerRadius={150}
-            fill="#8884d8"
-            dataKey="Amount spent (MXN)"
-          >
-            {filteredData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
+        <ResponsiveContainer width="100%" height={400}>
+          <PieChart>
+            <Pie
+              data={filteredData}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+              outerRadius={150}
+              fill="#8884d8"
+              dataKey="Amount spent (MXN)"
+            >
+              {filteredData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
       </Box>
       <footer className={styles.footer}>
         Datos obtenidos de <a href="https://www.facebook.com/ads/library/report/" target="_blank" rel="noopener noreferrer">Facebook Network (META)</a>.
