@@ -49,7 +49,7 @@ export default function Home({ data }) {
               top: 5, right: 30, left: 20, bottom: 60, // Ajustar el margen inferior para más espacio
             }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Page name" angle={-45} textAnchor="end" /> {/* Rotar las etiquetas */}
+            <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} /> {/* Rotar las etiquetas a -25 grados */}
             <YAxis yAxisId="left" />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip />
