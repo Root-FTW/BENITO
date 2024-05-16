@@ -19,6 +19,7 @@ export default function Home({ data }) {
     });
     setParsedData(parsed.data);
     setFilteredData(parsed.data);
+    console.log(parsed.data); // Verificar datos
   }, [data]);
 
   const filterByAmountSpent = () => {
@@ -46,7 +47,7 @@ export default function Home({ data }) {
       </Box>
       <Box my={4} className={styles.chart}>
         <BarChart
-          width="100%"
+          width={600}
           height={300}
           data={filteredData}
           margin={{
