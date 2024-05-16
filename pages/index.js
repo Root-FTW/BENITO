@@ -1,25 +1,38 @@
 import { useEffect, useState } from 'react';
-import Papa from 'papaparse';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 import fs from 'fs';
 import path from 'path';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 import { Container, Typography, Button, Box } from '@mui/material';
 import styles from '../styles/Home.module.css';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
+
+// Función para parsear el archivo de texto
+const parseTxt = (data) => {
+  const lines = data.split('\n').filter(line => line.trim() !== '');
+  const parsedData = [];
+  for (let i = 0; i < lines.length; i += 4) {
+    const nombre = lines[i].split(': ')[1];
+    const importeGastado = parseInt(lines[i + 1].split(': ')[1].replace(/,/g, ''));
+    const numeroAnuncios = parseInt(lines[i + 2].split(': ')[1]);
+    parsedData.push({
+      "Page name": nombre,
+      "Amount spent (MXN)": importeGastado,
+      "Number of ads in Library": numeroAnuncios
+    });
+  }
+  return parsedData;
+};
 
 export default function Home({ data }) {
   const [parsedData, setParsedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    const parsed = Papa.parse(data, {
-      header: true,
-      dynamicTyping: true,
-    });
-    setParsedData(parsed.data);
-    setFilteredData(parsed.data);
-    console.log(parsed.data); // Verificar los datos
+    const parsed = parseTxt(data);
+    setParsedData(parsed);
+    setFilteredData(parsed);
+    console.log(parsed); // Verificar los datos
   }, [data]);
 
   const filterByAmountSpent = () => {
@@ -95,7 +108,7 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'gastos.csv');
+  const filePath = path.join(process.cwd(), 'data', 'gastos.txt');
   const fileContents = fs.readFileSync(filePath, 'utf8');
 
   return {
