@@ -13,7 +13,7 @@ const parseTxt = (data) => {
   const parsedData = [];
   for (let i = 0; i < lines.length; i += 4) {
     try {
-      const nombre = lines[i].split(': ')[1];
+      const nombre = lines[i].split(': ')[1].trim();
       const importeGastado = parseInt(lines[i + 1].split(': ')[1].replace(/,/g, ''));
       const numeroAnuncios = parseInt(lines[i + 2].split(': ')[1]);
       parsedData.push({
