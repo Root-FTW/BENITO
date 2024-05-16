@@ -16,6 +16,14 @@ export default function Home({ data }) {
     const parsed = Papa.parse(data, {
       header: true,
       dynamicTyping: true,
+      skipEmptyLines: true,
+      transformHeader: header => header.trim(),
+      transform: (value, header) => {
+        if (header === 'Page name') {
+          return value.trim();
+        }
+        return value;
+      }
     });
     setParsedData(parsed.data);
     setFilteredData(parsed.data);
