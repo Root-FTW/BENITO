@@ -46,14 +46,14 @@ export default function Home({ data }) {
           <BarChart
             data={filteredData}
             margin={{
-              top: 5, right: 30, left: 20, bottom: 60, // Ajustar el margen inferior para más espacio
+              top: 60, right: 30, left: 20, bottom: 60, // Ajustar el margen superior e inferior para más espacio
             }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} /> {/* Rotar las etiquetas a -25 grados */}
             <YAxis yAxisId="left" />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip />
-            <Legend />
+            <Legend verticalAlign="top" height={36} /> {/* Mover la leyenda a la parte superior */}
             <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
             <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
           </BarChart>
