@@ -48,44 +48,46 @@ export default function Home({ data }) {
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
         Gastos en Campañas México 2024
       </Typography>
-      <Box my={4} className={styles.chart}>
-        <ResponsiveContainer width="100%" height={400}> {/* Aumentar la altura */}
-          <BarChart
-            data={filteredData}
-            margin={{
-              top: 60, right: 30, left: 20, bottom: 60,
-            }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} />
-            <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
-            <Tooltip />
-            <Legend verticalAlign="top" height={36} />
-            <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
-            <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
-          </BarChart>
-        </ResponsiveContainer>
-      </Box>
-      <Box my={4} className={styles.chart}>
-        <ResponsiveContainer width="100%" height={400}>
-          <PieChart>
-            <Pie
+      <Box className={styles.charts-container}>
+        <Box className={styles.chart}>
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart
               data={filteredData}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={({ index, percent }) => `${getCandidateName(index)}: ${(percent * 100).toFixed(0)}%`} // Mostrar el nombre del candidato
-              outerRadius={150}
-              fill="#8884d8"
-              dataKey="Amount spent (MXN)"
-            >
-              {filteredData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
+              margin={{
+                top: 60, right: 30, left: 20, bottom: 60,
+              }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} />
+              <YAxis yAxisId="left" />
+              <YAxis yAxisId="right" orientation="right" />
+              <Tooltip />
+              <Legend verticalAlign="top" height={36} />
+              <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
+              <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
+            </BarChart>
+          </ResponsiveContainer>
+        </Box>
+        <Box className={styles.chart}>
+          <ResponsiveContainer width="100%" height={400}>
+            <PieChart>
+              <Pie
+                data={filteredData}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ index, percent }) => `${getCandidateName(index)}: ${(percent * 100).toFixed(0)}%`}
+                outerRadius={150}
+                fill="#8884d8"
+                dataKey="Amount spent (MXN)"
+              >
+                {filteredData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </Box>
       </Box>
       <footer className={styles.footer}>
         Datos obtenidos de <a href="https://www.facebook.com/ads/library/report/" target="_blank" rel="noopener noreferrer">Facebook Network (META)</a>.
