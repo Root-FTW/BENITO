@@ -36,7 +36,7 @@ export default function Home({ data }) {
       <Typography variant="h2" component="h1" gutterBottom className={styles.heading}>
         Gastos en Campañas
       </Typography>
-      <Box my={2}>
+      <Box my={2} className={styles["button-group"]}>
         <Button variant="contained" color="primary" onClick={filterByAmountSpent} style={{ marginRight: '10px' }}>
           Ordenar por Cantidad Gastada
         </Button>
@@ -46,7 +46,7 @@ export default function Home({ data }) {
       </Box>
       <Box my={4} className={styles.chart}>
         <BarChart
-          width={600}
+          width="100%"
           height={300}
           data={filteredData}
           margin={{
