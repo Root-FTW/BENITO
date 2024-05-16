@@ -19,7 +19,6 @@ export default function Home({ data }) {
     });
     setParsedData(parsed.data);
     setFilteredData(parsed.data);
-    console.log(parsed.data); // Verificar datos
   }, [data]);
 
   const filterByAmountSpent = () => {
@@ -47,7 +46,7 @@ export default function Home({ data }) {
       </Box>
       <Box my={4} className={styles.chart}>
         <BarChart
-          width={600}
+          width="100%"
           height={300}
           data={filteredData}
           margin={{
@@ -81,6 +80,9 @@ export default function Home({ data }) {
           <Tooltip />
         </PieChart>
       </Box>
+      <footer className={styles.footer}>
+        Datos obtenidos de <a href="https://www.facebook.com/ads/library/report/" target="_blank" rel="noopener noreferrer">Facebook Ads Library Report</a>.
+      </footer>
     </Container>
   );
 }
