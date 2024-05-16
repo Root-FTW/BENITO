@@ -73,8 +73,8 @@ export default function Home({ data }) {
           <YAxis yAxisId="right" orientation="right" />
           <Tooltip />
           <Legend />
-          <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" />
-          <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" />
+          <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
+          <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
         </BarChart>
       </Box>
       <Box my={4} className={styles.chart}>
