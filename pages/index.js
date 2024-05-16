@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import fs from 'fs';
 import path from 'path';
-import { Container, Typography, Button, Box } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import styles from '../styles/Home.module.css';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
@@ -30,35 +30,17 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
-  const filterByAmountSpent = () => {
-    const filtered = [...parsedData].sort((a, b) => b["Amount spent (MXN)"] - a["Amount spent (MXN)"]);
-    setFilteredData(filtered);
-  };
-
-  const filterByNumberOfAds = () => {
-    const filtered = [...parsedData].sort((a, b) => b["Number of ads in Library"] - a["Number of ads in Library"]);
-    setFilteredData(filtered);
-  };
-
   return (
     <Container>
       <Typography variant="h2" component="h1" gutterBottom className={styles.projectName}>
         B.E.N.I.T.O
       </Typography>
       <Typography variant="h6" component="p" gutterBottom className={styles.projectDescription}>
-        Búsqueda de Engastos en Networks Inteligentes para Transparencia Oficial
+        Búsqueda En Networks Inteligentes para Transparencia Oficial
       </Typography>
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
         Gastos en Campañas México 2024
       </Typography>
-      <Box my={2} className={styles.buttonGroup}>
-        <Button variant="contained" color="primary" onClick={filterByAmountSpent} style={{ marginRight: '10px' }}>
-          Ordenar por Cantidad Gastada
-        </Button>
-        <Button variant="contained" color="secondary" onClick={filterByNumberOfAds}>
-          Ordenar por Número de Anuncios
-        </Button>
-      </Box>
       <Box my={4} className={styles.chart}>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
@@ -100,6 +82,8 @@ export default function Home({ data }) {
       </Box>
       <footer className={styles.footer}>
         Datos obtenidos de <a href="https://www.facebook.com/ads/library/report/" target="_blank" rel="noopener noreferrer">Facebook Network (META)</a>.
+        <br />
+        Made with ❤️ by <a href="https://www.linkedin.com/in/jonathanftw/" target="_blank" rel="noopener noreferrer">Jonathan Paz</a>
       </footer>
     </Container>
   );
