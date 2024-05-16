@@ -61,7 +61,7 @@ export default function Home({ data }) {
               <YAxis yAxisId="left" />
               <YAxis yAxisId="right" orientation="right" />
               <Tooltip />
-              <Legend verticalAlign="top" height={36} wrapperStyle={{ position: 'relative', top: '20px', textAlign: 'center' }} />
+              <Legend verticalAlign="top" height={36} />
               <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
               <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
             </BarChart>
