@@ -18,7 +18,7 @@ export default function Home({ data }) {
 
   return (
     <div className={styles.container}>
-      <h1>Gastos en Campañas</h1>
+      <h1 className={styles.heading}>Gastos en Campañas</h1>
       <div className={styles.chart}>
         <BarChart
           width={600}
