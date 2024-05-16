@@ -19,7 +19,7 @@ export default function Home({ data }) {
     });
     setParsedData(parsed.data);
     setFilteredData(parsed.data);
-    console.log(parsed.data); // Verificar datos
+    console.log(parsed.data); // Verificar los datos
   }, [data]);
 
   const filterByAmountSpent = () => {
