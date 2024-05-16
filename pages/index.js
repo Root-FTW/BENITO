@@ -48,7 +48,7 @@ export default function Home({ data }) {
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
         Gastos en Campañas México 2024
       </Typography>
-      <Box className={styles.charts-container}>
+      <Box className={styles.chartsContainer}>
         <Box className={styles.chart}>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart
