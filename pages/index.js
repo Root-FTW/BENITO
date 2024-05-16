@@ -68,7 +68,7 @@ export default function Home({ data }) {
             top: 5, right: 30, left: 20, bottom: 5,
           }}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Page name" />
+          <XAxis dataKey="Page name" tickFormatter={(name) => name.split(' ')[0]} />
           <YAxis yAxisId="left" />
           <YAxis yAxisId="right" orientation="right" />
           <Tooltip />
