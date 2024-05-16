@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 import fs from 'fs';
 import path from 'path';
-import styles from '../styles/Home.module.css';
+import { Container, Typography, Button, Box } from '@mui/material';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
@@ -31,13 +31,19 @@ export default function Home({ data }) {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Gastos en Campañas</h1>
-      <div>
-        <button onClick={filterByAmountSpent}>Ordenar por Cantidad Gastada</button>
-        <button onClick={filterByNumberOfAds}>Ordenar por Número de Anuncios</button>
-      </div>
-      <div className={styles.chart}>
+    <Container>
+      <Typography variant="h2" component="h1" gutterBottom>
+        Gastos en Campañas
+      </Typography>
+      <Box my={2}>
+        <Button variant="contained" color="primary" onClick={filterByAmountSpent} style={{ marginRight: '10px' }}>
+          Ordenar por Cantidad Gastada
+        </Button>
+        <Button variant="contained" color="secondary" onClick={filterByNumberOfAds}>
+          Ordenar por Número de Anuncios
+        </Button>
+      </Box>
+      <Box my={4}>
         <BarChart
           width={600}
           height={300}
@@ -53,8 +59,8 @@ export default function Home({ data }) {
           <Bar dataKey="Amount spent (MXN)" fill="#8884d8" />
           <Bar dataKey="Number of ads in Library" fill="#82ca9d" />
         </BarChart>
-      </div>
-      <div className={styles.chart}>
+      </Box>
+      <Box my={4}>
         <PieChart width={400} height={400}>
           <Pie
             data={filteredData}
@@ -72,8 +78,8 @@ export default function Home({ data }) {
           </Pie>
           <Tooltip />
         </PieChart>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
 
