@@ -9,6 +9,7 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
 export default function Home({ data }) {
   const [parsedData, setParsedData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const parsed = Papa.parse(data, {
@@ -16,16 +17,31 @@ export default function Home({ data }) {
       dynamicTyping: true,
     });
     setParsedData(parsed.data);
+    setFilteredData(parsed.data);
   }, [data]);
+
+  const filterByAmountSpent = () => {
+    const filtered = [...parsedData].sort((a, b) => b["Amount spent (MXN)"] - a["Amount spent (MXN)"]);
+    setFilteredData(filtered);
+  };
+
+  const filterByNumberOfAds = () => {
+    const filtered = [...parsedData].sort((a, b) => b["Number of ads in Library"] - a["Number of ads in Library"]);
+    setFilteredData(filtered);
+  };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Gastos en Campañas</h1>
+      <div>
+        <button onClick={filterByAmountSpent}>Ordenar por Cantidad Gastada</button>
+        <button onClick={filterByNumberOfAds}>Ordenar por Número de Anuncios</button>
+      </div>
       <div className={styles.chart}>
         <BarChart
           width={600}
           height={300}
-          data={parsedData}
+          data={filteredData}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}>
@@ -41,7 +57,7 @@ export default function Home({ data }) {
       <div className={styles.chart}>
         <PieChart width={400} height={400}>
           <Pie
-            data={parsedData}
+            data={filteredData}
             cx={200}
             cy={200}
             labelLine={false}
@@ -50,7 +66,7 @@ export default function Home({ data }) {
             fill="#8884d8"
             dataKey="Amount spent (MXN)"
           >
-            {parsedData.map((entry, index) => (
+            {filteredData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
