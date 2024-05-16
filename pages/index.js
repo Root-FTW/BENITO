@@ -26,7 +26,7 @@ const parseTxt = (data) => {
         console.error('Error parsing line:', lines.slice(i, i + 4));
       }
     } catch (error) {
-      console.error('Error parsing line:', lines[i], error);
+      console.error('Error parsing line:', lines.slice(i, i + 4), error);
     }
   }
   return parsedData;
