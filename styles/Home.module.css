@@ -6,6 +6,20 @@
   padding: 2rem;
 }
 
+.projectName {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.projectDescription {
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
 .heading {
   color: #333;
   text-align: center;
