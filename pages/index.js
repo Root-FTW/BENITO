@@ -46,10 +46,10 @@ export default function Home({ data }) {
           <BarChart
             data={filteredData}
             margin={{
-              top: 5, right: 30, left: 20, bottom: 5,
+              top: 5, right: 30, left: 20, bottom: 60, // Ajustar el margen inferior para más espacio
             }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Page name" />
+            <XAxis dataKey="Page name" angle={-45} textAnchor="end" /> {/* Rotar las etiquetas */}
             <YAxis yAxisId="left" />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip />
