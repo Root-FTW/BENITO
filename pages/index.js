@@ -13,14 +13,18 @@ const parseTxt = (data) => {
   const parsedData = [];
   for (let i = 0; i < lines.length; i += 4) {
     try {
-      const nombre = lines[i].split(': ')[1].trim();
-      const importeGastado = parseInt(lines[i + 1].split(': ')[1].replace(/,/g, ''));
-      const numeroAnuncios = parseInt(lines[i + 2].split(': ')[1]);
-      parsedData.push({
-        "Page name": nombre,
-        "Amount spent (MXN)": importeGastado,
-        "Number of ads in Library": numeroAnuncios
-      });
+      const nombre = lines[i]?.split(': ')[1]?.trim();
+      const importeGastado = parseInt(lines[i + 1]?.split(': ')[1]?.replace(/,/g, ''));
+      const numeroAnuncios = parseInt(lines[i + 2]?.split(': ')[1]);
+      if (nombre && !isNaN(importeGastado) && !isNaN(numeroAnuncios)) {
+        parsedData.push({
+          "Page name": nombre,
+          "Amount spent (MXN)": importeGastado,
+          "Number of ads in Library": numeroAnuncios
+        });
+      } else {
+        console.error('Error parsing line:', lines[i], lines[i + 1], lines[i + 2]);
+      }
     } catch (error) {
       console.error('Error parsing line:', lines[i], error);
     }
