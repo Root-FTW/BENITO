@@ -30,6 +30,13 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
+  const getCandidateName = (index) => {
+    if (index >= 0 && index < parsedData.length) {
+      return parsedData[index]["Page name"].split(' ')[0];
+    }
+    return '';
+  };
+
   return (
     <Container>
       <Typography variant="h2" component="h1" gutterBottom className={styles.projectName}>
@@ -42,18 +49,18 @@ export default function Home({ data }) {
         Gastos en Campañas México 2024
       </Typography>
       <Box my={4} className={styles.chart}>
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={400}> {/* Aumentar la altura */}
           <BarChart
             data={filteredData}
             margin={{
-              top: 60, right: 30, left: 20, bottom: 60, // Ajustar el margen superior e inferior para más espacio
+              top: 60, right: 30, left: 20, bottom: 60,
             }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} /> {/* Rotar las etiquetas a -25 grados */}
+            <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} />
             <YAxis yAxisId="left" />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip />
-            <Legend verticalAlign="top" height={36} /> {/* Mover la leyenda a la parte superior */}
+            <Legend verticalAlign="top" height={36} />
             <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
             <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
           </BarChart>
@@ -67,7 +74,7 @@ export default function Home({ data }) {
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+              label={({ index, percent }) => `${getCandidateName(index)}: ${(percent * 100).toFixed(0)}%`} // Mostrar el nombre del candidato
               outerRadius={150}
               fill="#8884d8"
               dataKey="Amount spent (MXN)"
