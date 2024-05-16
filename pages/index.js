@@ -46,7 +46,7 @@ export default function Home({ data }) {
         B.E.N.I.T.O
       </Typography>
       <Typography variant="h6" component="p" gutterBottom className={styles.projectDescription}>
-        Búsqueda de Engastos en Networks Inteligentes para Transparencia Oficial
+        Búsqueda En Networks Inteligentes para Transparencia Oficial
       </Typography>
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
         Gastos en Campañas México 2024
