@@ -46,7 +46,7 @@ export default function Home({ data }) {
         B.E.N.I.T.O
       </Typography>
       <Typography variant="h6" component="p" gutterBottom className={styles.projectDescription}>
-        Búsqueda En Networks Inteligentes para Transparencia Oficial
+        Búsqueda de Engastos en Networks Inteligentes para Transparencia Oficial
       </Typography>
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
         Gastos en Campañas México 2024
@@ -69,11 +69,12 @@ export default function Home({ data }) {
           }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="Page name" />
-          <YAxis />
+          <YAxis yAxisId="left" />
+          <YAxis yAxisId="right" orientation="right" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Amount spent (MXN)" fill="#8884d8" />
-          <Bar dataKey="Number of ads in Library" fill="#82ca9d" />
+          <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" />
+          <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" />
         </BarChart>
       </Box>
       <Box my={4} className={styles.chart}>
