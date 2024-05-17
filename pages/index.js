@@ -46,8 +46,11 @@ export default function Home({ data }) {
       return (
         <div className={styles.tooltip}>
           <p className={styles.label}><strong>{label}</strong></p>
-          <p className={styles.intro}>{`Amount spent (MXN): ${formatNumber(payload[0].value)}`}</p>
-          <p className={styles.intro}>{`Number of ads in Library: ${formatNumber(payload[1].value)}`}</p>
+          {payload.map((entry, index) => (
+            <p key={`item-${index}`} className={styles.intro} style={{ color: entry.color }}>
+              {`${entry.name}: ${formatNumber(entry.value)}`}
+            </p>
+          ))}
         </div>
       );
     }
