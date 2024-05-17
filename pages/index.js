@@ -58,7 +58,7 @@ export default function Home({ data }) {
             <BarChart
               data={filteredData}
               margin={{
-                top: 80, right: 30, left: 20, bottom: 60, // Ajustar el margen superior para más espacio
+                top: 80, right: 30, left: 40, bottom: 60, // Ajustar el margen izquierdo para más espacio
               }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} />
