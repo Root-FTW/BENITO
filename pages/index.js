@@ -34,18 +34,12 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
-  const getCandidateName = (index) => {
-    if (index >= 0 && index < parsedData.length) {
-      return parsedData[index]["Page name"].split(' ')[0];
-    }
-    return '';
-  };
-
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
+      const candidateName = payload[0]?.payload["Page name"];
       return (
         <div className={styles.tooltip}>
-          <p className={styles.label}><strong>{label}</strong></p>
+          <p className={styles.label}><strong>{candidateName}</strong></p>
           {payload.map((entry, index) => (
             <p key={`item-${index}`} className={styles.intro} style={{ color: entry.color }}>
               {`${entry.name}: ${formatNumber(entry.value)}`}
