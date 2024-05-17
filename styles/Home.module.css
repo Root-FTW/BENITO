@@ -30,7 +30,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; /* Asegúrate de que las gráficas no se envuelvan */
+  flex-wrap: wrap;
   gap: 2rem; /* Espaciado entre las gráficas */
 }
 
@@ -45,6 +45,21 @@
   text-align: center;
   font-size: 0.9rem;
   color: #aaa;
+}
+
+.tooltip {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.intro {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
