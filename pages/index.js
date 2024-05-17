@@ -34,9 +34,9 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      const candidateName = label;
+      const candidateName = payload[0]?.payload["Page name"];
       return (
         <div className={styles.tooltip}>
           <p className={styles.label}><strong>{candidateName}</strong></p>
