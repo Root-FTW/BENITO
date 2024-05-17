@@ -34,6 +34,13 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
+  const getCandidateName = (index) => {
+    if (index >= 0 && index < parsedData.length) {
+      return parsedData[index]["Page name"].split(' ')[0];
+    }
+    return '';
+  };
+
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       const candidateName = payload[0]?.payload["Page name"];
