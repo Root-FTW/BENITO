@@ -1,4 +1,3 @@
-```markdown
 # B.E.N.I.T.O
 
 **B.E.N.I.T.O** (Búsqueda En Networks Inteligentes para Transparencia Oficial) es una aplicación web para visualizar los gastos en Facebook de los candidatos presidenciales de México 2024. La aplicación muestra los datos de gasto en campañas y el número de anuncios en la biblioteca de Facebook utilizando gráficos interactivos.
