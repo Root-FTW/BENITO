@@ -26,12 +26,8 @@ const formatNumber = (num) => {
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
-    const candidateName = payload[0]?.payload["Page name"];
     return (
       <div className={styles.tooltip}>
-        <p className={styles.label}>
-          <strong>{candidateName}</strong>
-        </p>
         {payload.map((entry, index) => (
           <p key={`item-${index}`} className={styles.intro} style={{ color: entry.color }}>
             {`${entry.name}: ${formatNumber(entry.value)}`}
