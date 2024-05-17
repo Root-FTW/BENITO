@@ -5,12 +5,15 @@
 ## Tabla de Contenidos
 
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instalación](#instalación)
+- [Instalación y Configuración](#instalación-y-configuración)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Descripción de los Archivos y Directorios](#descripción-de-los-archivos-y-directorios)
 - [Explicación del Código](#explicación-del-código)
-- [Gráficos](#gráficos)
-- [Estilos](#estilos)
+  - [pages/index.js](#pagesindexjs)
+  - [styles/Home.module.css](#styleshomemodulecss)
+  - [package.json](#packagejson)
+- [Gráficos y Visualización](#gráficos-y-visualización)
+- [Estilos y CSS](#estilos-y-css)
 - [Despliegue](#despliegue)
 - [Contribuir](#contribuir)
 - [Licencia](#licencia)
@@ -24,7 +27,7 @@
 - **PapaParse**: Biblioteca para parsear archivos CSV.
 - **CSS Modules**: Módulos CSS para estilos locales.
 
-## Instalación
+## Instalación y Configuración
 
 1. Clonar el repositorio:
    ```bash
@@ -85,9 +88,35 @@ Este archivo, que proporciona una descripción detallada del proyecto.
 
 Archivo de configuración de npm que contiene las dependencias y scripts del proyecto.
 
-### `next.config.js`
+```json
+{
+  "name": "benito",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "recharts": "^2.1.10",
+    "papaparse": "^5.3.0",
+    "@mui/material": "^5.2.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.6",
+    "autoprefixer": "^10.2.6"
+  }
+}
+```
 
-Archivo de configuración de Next.js.
+Este archivo define las dependencias del proyecto, los scripts de npm para ejecutar, construir y lintar la aplicación, así como las versiones de las bibliotecas utilizadas.
 
 ## Explicación del Código
 
@@ -265,9 +294,7 @@ export async function getStaticProps() {
 }
 ```
 
-### Estilos
-
-#### `styles/Home.module.css`
+### `styles/Home.module.css`
 
 ```css
 .container {
