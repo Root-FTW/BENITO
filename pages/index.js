@@ -41,6 +41,20 @@ export default function Home({ data }) {
     return '';
   };
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className={styles.tooltip}>
+          <p className={styles.label}><strong>{label}</strong></p>
+          <p className={styles.intro}>{`Amount spent (MXN): ${formatNumber(payload[0].value)}`}</p>
+          <p className={styles.intro}>{`Number of ads in Library: ${formatNumber(payload[1].value)}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <Container>
       <Typography variant="h2" component="h1" gutterBottom className={styles.projectName}>
@@ -50,7 +64,7 @@ export default function Home({ data }) {
         Búsqueda En Networks Inteligentes para Transparencia Oficial
       </Typography>
       <Typography variant="h3" component="h2" gutterBottom className={styles.heading}>
-        Gastos en Campañas México 2024
+        Gastos en Facebook de candidatos presidenciales México 2024
       </Typography>
       <Box className={styles.chartsContainer}>
         <Box className={styles.chart}>
@@ -64,8 +78,8 @@ export default function Home({ data }) {
               <XAxis dataKey="Page name" angle={-25} textAnchor="end" interval={0} />
               <YAxis yAxisId="left" tickFormatter={formatNumber} />
               <YAxis yAxisId="right" orientation="right" tickFormatter={formatNumber} />
-              <Tooltip formatter={formatNumber} />
-              <Legend verticalAlign="top" wrapperStyle={{ top: 0 }} /> {/* Mover la leyenda hacia arriba */}
+              <Tooltip content={<CustomTooltip />} />
+              <Legend verticalAlign="top" wrapperStyle={{ top: 0, marginBottom: 5 }} /> {/* Mover la leyenda hacia arriba y agregar margen */}
               <Bar yAxisId="left" dataKey="Amount spent (MXN)" fill="#8884d8" barSize={20} />
               <Bar yAxisId="right" dataKey="Number of ads in Library" fill="#82ca9d" barSize={20} />
             </BarChart>
