@@ -12,6 +12,24 @@ const formatNumber = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    const candidateName = payload[0]?.payload["Page name"];
+    return (
+      <div className={styles.tooltip}>
+        <p className={styles.label}><strong>{candidateName}</strong></p>
+        {payload.map((entry, index) => (
+          <p key={`item-${index}`} className={styles.intro} style={{ color: entry.color }}>
+            {`${entry.name}: ${formatNumber(entry.value)}`}
+          </p>
+        ))}
+      </div>
+    );
+  }
+
+  return null;
+};
+
 export default function Home({ data }) {
   const [parsedData, setParsedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -33,24 +51,6 @@ export default function Home({ data }) {
     setFilteredData(parsed.data);
     console.log(parsed.data); // Verificar los datos
   }, [data]);
-
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      const candidateName = payload[0]?.payload["Page name"];
-      return (
-        <div className={styles.tooltip}>
-          <p className={styles.label}><strong>{candidateName}</strong></p>
-          {payload.map((entry, index) => (
-            <p key={`item-${index}`} className={styles.intro} style={{ color: entry.color }}>
-              {`${entry.name}: ${formatNumber(entry.value)}`}
-            </p>
-          ))}
-        </div>
-      );
-    }
-
-    return null;
-  };
 
   return (
     <Container>
