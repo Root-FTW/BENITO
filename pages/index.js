@@ -34,16 +34,9 @@ export default function Home({ data }) {
     console.log(parsed.data); // Verificar los datos
   }, [data]);
 
-  const getCandidateName = (index) => {
-    if (index >= 0 && index < parsedData.length) {
-      return parsedData[index]["Page name"].split(' ')[0];
-    }
-    return '';
-  };
-
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      const candidateName = payload[0]?.payload["Page name"];
+      const candidateName = label;
       return (
         <div className={styles.tooltip}>
           <p className={styles.label}><strong>{candidateName}</strong></p>
@@ -97,7 +90,7 @@ export default function Home({ data }) {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ index, percent }) => `${getCandidateName(index)}: ${(percent * 100).toFixed(0)}%`}
+                label={({ index, percent }) => `${filteredData[index]["Page name"].split(' ')[0]}: ${(percent * 100).toFixed(0)}%`}
                 outerRadius={150}
                 fill="#8884d8"
                 dataKey="Amount spent (MXN)"
